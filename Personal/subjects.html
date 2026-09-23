@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title> Subjects </title>
+    <link rel="icon" href="./favicon/favicon.ico">
+    <link rel="icon" href="./favicon/web-app-manifest-icon-512x512.png">
+    <link rel="manifest" href="./favicon/web-app-manifest-192x192.png">
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+</head>
+
+<body>
+        <header>
+            <nav>
+                <span class="brand-name">🎀Aeri</span>
+                    <a href="index.html">Home</a>
+                        <a href="subjects.html">Subjects</a>
+                            <a href="links.html">Links</a>
+            </nav>
+        </header>
+
+<main>
+        <div class="dashboard">
+    <aside class="sidebar">
+        <h2>My Subjects</h2>
+            <ul class="subject-list" id="subject-list"></ul>
+                <button id="add-subject-btn">+ Add Subject</button>
+    </aside>
+
+        <main class="main-content">
+        <header>
+            <h2 id="current-subject-title"></h2>
+        </header>
+
+<div class="search-row" id="search-row" style="display: none;">
+    <input type="text" id="input-box" placeholder="Write your task here...">
+    <input type="date" id="date-box" class="datetime-input">
+    <input type="time" id="time-box" class="datetime-input">
+    <button id="add-btn">Add</button>
+</div>
+
+        <ul id="list-container"></ul>
+    </main>
+</div>
+
+<div id="custom-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+        <h3>Add a New Subject</h3>
+        <input type="text" id="modal-input" placeholder="Enter Subject Name...">
+        <div class="modal-buttons">
+            <button id="modal-ok">OK</button>
+            <button id="modal-cancel">Cancel</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="script.js"></script>
+    </body>
+</html>

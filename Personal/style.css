@@ -1,0 +1,657 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Fira Code', monospace;
+}
+.todo-app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 540px;
+    margin: 100px auto 20px auto; 
+    padding: 40px 30px 70px;
+    border-radius: 30px;
+    border: 4px dashed #ffb6c1;
+    box-shadow: 0 15px 25px rgba(255, 105, 180, 0.2);
+}
+.todo-app h2 {
+    color: #440424;
+    text-shadow: 2px 2px 0px #ffe4e1;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 32px;
+    letter-spacing: 2px;
+}
+img {
+    border-radius: 20px;
+    box-shadow: 0 8px 15px rgba(255, 105, 180, 0.3);
+    display: block;
+    margin: 0 auto 20px auto;
+}
+button {
+    display: block;
+    margin: 0 auto 20px auto;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+
+
+
+
+
+/* Dashboard Styles */
+body {
+    margin: 0;
+    background: #ffafbd;
+}
+.dashboard {
+    display: flex;
+    height: 100vh;
+}
+.sidebar {
+    width: 280px;
+    padding: 30px 20px;
+    background: #ffb6c1;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+.sidebar h2 {
+    text-align: center;
+    text-shadow: 2px 2px 0px #ff69b4;
+    margin-bottom: 30px;
+}
+.subject-list {
+    list-style: none;
+    padding: 0;
+    flex: 1;
+}
+.subject-list button {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px;
+    background: transparent;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.subject-list button:hover, .subject-list button.active {
+    background: #fff;
+    color: #ff69b4;
+    border-color: #fff;
+    box-shadow: 0 4px 8px rgba(255, 105, 180, 0.2);
+}
+#add-subject-btn {
+    padding: 15px;
+    background: #ff69b4;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.main-content {
+    flex: 1;
+    background: #fff;
+    border-radius: 40px 0 0 40px;
+    padding: 50px;
+    box-shadow: -10px 0 20px rgba(255, 105, 180, 0.1);
+    overflow-y: auto;
+}
+.main-content header h2 {
+    color: #ff69b4;
+    border-bottom: 3px dashed #ffe4e1;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+}
+
+
+
+
+
+/* Search Row Styles */
+#search-row {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    gap: 10px;
+    align-items: center;
+    background: #ffe4e1;
+    border-radius: 30px;
+    padding: 10px 15px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 10px rgba(255, 105, 180, 0.1);
+}
+#search-row input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+    color: #860037;
+    font-size: 16px;
+}
+#search-row button {
+    background: #ff69b4; 
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease; 
+    margin: 0;
+}
+#search-row button:hover {
+    background: #ff1493; 
+    transform: scale(1.05);
+}
+#list-container {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+#list-container li {
+    background: #fff0f5;
+    padding: 16px 20px 16px 50px;
+    margin-bottom: 12px;
+    border-radius: 18px;
+    border: 2px dashed #ffb6c1;
+    color: #860037;
+    font-size: 16px;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(255, 105, 180, 0.05);
+}
+#list-container li:hover {
+    transform: translateX(4px);
+    background: #ffe4e1;
+}
+/* Cute bullet icon using emojis */
+#list-container li::before {
+    content: '🌸';
+    position: absolute;
+    left: 20px;
+    font-size: 14px;
+}
+/* Checked/Completed state */
+#list-container li.checked {
+    background: #f7f7f7;
+    border-left-color: #d3d3d3;
+    opacity: 0.8;
+}
+#list-container li.checked::before {
+    content: '✨';
+}
+/* Cute delete button for tasks */
+#list-container li span:hover {
+    background: #ff1493;
+    transform: scale(1.1);
+}
+.datetime-input {
+    border: none;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 10px;
+    border-radius: 15px;
+    color: #860037;
+    outline: none;
+    font-family: inherit;
+    font-size: 14px;
+}
+.task-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Stops text from centering/overlapping */
+    text-align: left;
+    gap: 4px;
+}
+.task-text, .task-time {
+    background: none;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+}
+.delete-btn {
+    background: #ffb6c1;
+    color: white;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+.delete-btn:hover {
+    background: #ff1493;
+    transform: scale(1.1);
+}
+#list-container li.checked .task-text,
+#list-container li.checked .task-time {
+    text-decoration: line-through;
+    color: #a0a0a0;
+}
+
+
+
+
+
+
+
+
+
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-content {
+    background: #fff0f5;
+    padding: 30px 40px; 
+    border-radius: 20px;
+    border: 3px dashed #ffb6c1;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(255, 105, 180, 0.3);
+    width: 320px; 
+}
+.modal-content h3 {
+    color: #ff69b4;
+    margin-top: 0;
+}
+#modal-input {
+    width: 100%; 
+    box-sizing: border-box; 
+    padding: 12px;
+    border-radius: 10px;
+    border: 2px solid #ffb6c1;
+    margin-bottom: 25px;
+    outline: none;
+    color: #860037;
+    font-family: inherit;
+}
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Puts them side-by-side with a nice gap */
+    margin-top: 10px;
+}
+.modal-buttons button {
+    padding: 10px 25px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+#modal-ok { 
+    background: #ff69b4; 
+    color: white; 
+    box-shadow: 0 4px 8px rgba(255, 105, 180, 0.3);
+}
+#modal-ok:hover {
+    background: #ff1493;
+    transform: translateY(-2px);
+}
+#modal-cancel { 
+    background: #fff; 
+    color: #ff69b4; 
+    border: 2px solid #ffb6c1; 
+}
+#modal-cancel:hover {
+    background: #ffe4e1;
+    transform: translateY(-2px);
+}
+#modal-ok { background: #ff69b4; color: white; }
+#modal-cancel { background: #d3d3d3; color: #860037; }
+
+
+
+
+
+
+/* Top Navigation Bar */
+nav {
+    display: flex;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #ffb6c1;
+    background-image: radial-gradient(#fff 15%, transparent 16%), radial-gradient(#fff 15%, transparent 16%);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+    border-bottom: 6px dashed #fff;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+}
+.brand-name {
+    font-size: 28px;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 3px 3px 0px #ff69b4; 
+    margin-right: 30px;
+    letter-spacing: 2px;
+}
+nav a {
+    text-decoration: none;
+    color: #ff69b4;
+    background: rgba(255, 255, 255, 0.7);
+    font-weight: 800;
+    font-size: 16px;
+    padding: 10px 22px;
+    margin: 0 8px;
+    border-radius: 30px;
+    border: 2px solid #fff;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); 
+}
+nav a:hover, nav a.active {
+    background: #fff;
+    color: #ff1493;
+    border: 2px dashed #ff69b4;
+    box-shadow: 0 6px 12px rgba(255, 105, 180, 0.4);
+    transform: translateY(-4px) scale(1.05); 
+}
+
+
+
+
+/* Subject List Styles */
+.subject-list li {
+    position: relative;
+    margin-bottom: 15px;
+}
+.subject-list button {
+    width: 100%;
+    padding: 15px 40px 15px 20px;
+    background: rgba(255, 255, 255, 0.5); /* Semi-transparent */
+    border: 2px solid transparent;
+    border-radius: 20px;
+    color: #860037;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.subject-list button:hover, .subject-list button.active {
+    background: #fff;
+    color: #ff1493;
+    border-color: #ff69b4;
+    box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
+    transform: scale(1.02);
+}
+/* Delete button inside the Subject Tab */
+.subject-list span {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #ffb6c1;
+    color: #fff;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: 0.2s;
+}
+.subject-list span:hover { background: #ff1493; }
+/* Analytics Dashboard Styles */
+.dashboard-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 10px;
+}
+/* Top 4 Cards */
+.top-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+.dash-card {
+    padding: 20px;
+    border-radius: 20px;
+    color: #fff;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+}
+.dash-card:hover { transform: translateY(-5px); }
+.dash-card p { margin: 0 0 10px 0; font-weight: bold; font-size: 14px; opacity: 0.9; }
+.dash-card h2 { margin: 0; font-size: 32px; }
+/* Cutesy Gradients */
+.pastel-blue { background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); }
+.pastel-purple { background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%); }
+.pastel-pink { background: linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%); }
+.pastel-orange { background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%); }
+/* Bottom Progress Chart Area */
+.bottom-charts {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.chart-box {
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.1);
+}
+.chart-box h3 {
+    margin-top: 0;
+    color: #860037;
+}
+/* Custom Progress Bar */
+.progress-track {
+    width: 100%;
+    height: 25px;
+    background: #ffe4e1;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff69b4, #ff1493);
+    border-radius: 20px;
+    transition: width 0.5s ease-in-out;
+}
+.progress-text {
+    text-align: right;
+    color: #ff69b4;
+    font-weight: bold;
+    margin: 0;
+}
+
+
+
+
+#list-container li {
+    background: #ffffff;
+    padding: 18px 22px;
+    margin-bottom: 14px;
+    border-radius: 20px;
+    border: none;
+    border-left: 6px solid #ff69b4; /* Cute left accent bar */
+    color: #860037;
+    font-size: 16px;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.08);
+    transition: all 0.3s ease;
+}
+#list-container li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(255, 105, 180, 0.15);
+}
+#list-container li::before {
+    display: none; /* Removes old bullet icon to clean up the card layout */
+}
+.task-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.task-text {
+    font-weight: bold;
+    font-size: 17px;
+}
+.task-time {
+    font-size: 12px;
+    color: #ff94c2;
+}
+/* Checked state adjustments for the new card style */
+#list-container li.checked {
+    background: #fdfafb;
+    border-left-color: #d3d3d3;
+    opacity: 0.7;
+}
+#list-container li.checked .task-text {
+    text-decoration: line-through;
+    color: #b08994;
+}
+
+
+
+
+
+/* --- Mobile Responsive Layout --- */
+@media (max-width: 768px) {
+    /* Stack Sidebar and Main Content */
+    .dashboard {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+    }
+    .sidebar {
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    .main-content {
+        border-radius: 30px 30px 0 0; /* Curve top corners only */
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    /* Wrap Navigation */
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 10px;
+    }
+    .brand-name {
+        width: 100%;
+        text-align: center;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    nav a {
+        margin-bottom: 5px;
+    }
+    /* Dashboard Analytics */
+    .top-cards {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns instead of 4 */
+    }
+    /* Stack Input Row */
+    #search-row {
+        flex-direction: column;
+        align-items: stretch;
+        border-radius: 20px;
+    }
+    #input-box, .datetime-input, #add-btn {
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 8px;
+    }
+    #add-btn {
+        margin-bottom: 0;
+    }
+    /* Task Cards */
+    #list-container li {
+        padding: 12px 15px;
+    }
+}
+/* For Extra Small Screens (Phones) */
+@media (max-width: 480px) {
+    .top-cards {
+        grid-template-columns: 1fr; /* 1 column */
+    }
+    
+    .modal-content {
+        width: 90%;
+        padding: 20px;
+    }
+}
+
+
+
+
+#pin-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 182, 193, 0.4);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+#pin-overlay .modal-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(255, 105, 180, 0.2);
+    border: 2px dashed #ffb6c1;
+}
+#pin-overlay input {
+    width: 80%;
+    padding: 12px;
+    margin: 15px 0;
+    border: 2px solid #ffe4e1;
+    border-radius: 15px;
+    outline: none;
+    text-align: center;
+    font-size: 16px;
+    color: #860037;
+}
+#pin-submit {
+    background: #ff69b4;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#pin-submit:hover {
+    background: #ff1493;
+    transform: scale(1.05);
+}
+
+
+
+
+
